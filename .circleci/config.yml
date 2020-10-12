@@ -19,13 +19,17 @@ jobs:
 
 
 workflows:
-  test-and-deploy:
-      jobs:
-        - node/test
-        - heroku/deploy-via-git:
-            filters:
-              branches:
-                only:
-                  - master
-            requires:
-              - node/test
+  test:
+    jobs: # Should run on PR
+      - node/test
+  test-and-deploy-to-dev: # Should run when merged to main
+    jobs:
+      - node/test
+      - heroku/deploy-via-git:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - node/test
+
