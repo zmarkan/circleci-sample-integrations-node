@@ -19,9 +19,6 @@ jobs:
 
 
 workflows:
-  test:
-    jobs: # Should run on PR
-      - node/test
   test-and-deploy-to-dev: # Should run when merged to main
     jobs:
       - node/test
