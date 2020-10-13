@@ -39,8 +39,8 @@ workflows:
             only: release-*
       - hold:
         type: approval
-          requires:
-            - node/test
+        requires:
+          - node/test
       - heroku/deploy-via-git:
           requires:
             -node/test
