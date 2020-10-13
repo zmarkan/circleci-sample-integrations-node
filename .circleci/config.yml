@@ -23,10 +23,29 @@ workflows:
     jobs:
       - node/test
       - heroku/deploy-via-git:
+          app-name: $HEROKU_API_DEV_ENV
           filters:
             branches:
               only:
                 - main
           requires:
             - node/test
+  
+  deploy-prod:
+    when:
+      equal: [main, << pipeline.git.branch >> ]
+    jobs:
+      - node/test:
+          filters:
+            tags:
+              only: 
+                - /release-*/
+      - hold:
+          type: approval
+          requires:
+            - node/test
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_API_PROD_ENV
+          requires:
+            - hold
 
