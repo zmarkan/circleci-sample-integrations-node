@@ -32,15 +32,14 @@ workflows:
             - node/test
   
   deploy-prod:
+    when:
+      - equal: [main, << pipeline.git.branch >> ]
     jobs:
       - node/test:
           filters:
             tags:
               only: 
-                - release-*
-            branches:
-              only:
-                - main
+                - /release-*/
       - hold:
           type: approval
           requires:
