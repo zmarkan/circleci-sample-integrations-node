@@ -29,4 +29,22 @@ workflows:
                 - main
           requires:
             - node/test
+          environment:
+              HEROKU_APP_NAME: $HEROKU_API_DEV_ENV
+  deploy-prod:
+    jobs:
+      - node/test:
+        filters:
+          tags:
+            only: release-*
+      - hold:
+        type: approval
+          requires:
+            - node/test
+      - heroku/deploy-via-git:
+          requires:
+            -node/test
+            - hold
+          environment:
+            HEROKU_APP_NAME: $HEROKU_API_PROD_ENV
 
