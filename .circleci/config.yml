@@ -21,21 +21,14 @@ workflows:
     when:
       equal: [main, << pipeline.git.branch >> ]
     jobs:
-      - node/test:
-          filters:
-            tags:
-              only: /^release.*/
-            branches:
-              ignore: /.*/
+      - node/test
       - hold:
           type: approval
           requires:
             - node/test
           filters:
             tags:
-              only: /^release.*/
-            branches:
-              ignore: /.*/     
+              only: /^release.*/   
       - heroku/deploy-via-git:
           app-name: $HEROKU_API_PROD_ENV
           requires:
@@ -43,6 +36,5 @@ workflows:
           filters:
             tags:
               only: /^release.*/
-            branches:
-              ignore: /.*/
+
 
