@@ -31,8 +31,18 @@ workflows:
           type: approval
           requires:
             - node/test
+          filters:
+            tags:
+              only: /^release.*/
+            branches:
+              ignore: /.*/     
       - heroku/deploy-via-git:
           app-name: $HEROKU_API_PROD_ENV
           requires:
             - hold
+          filters:
+            tags:
+              only: /^release.*/
+            branches:
+              ignore: /.*/
 
