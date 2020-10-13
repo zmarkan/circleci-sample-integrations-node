@@ -36,7 +36,11 @@ workflows:
       - node/test:
           filters:
             tags:
-              only: release-*
+              only: 
+                - release-*
+            branches:
+              only:
+                - main
       - hold:
           type: approval
           requires:
