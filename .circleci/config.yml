@@ -4,20 +4,6 @@ orbs:
   node: circleci/node@4.1.0
   heroku: circleci/heroku@1.2.2
 
-jobs:
-  build:
-    # Compile typescript ??
-  test:
-    # Test typescript
-
-  deploy-dev:
-    # Deploy to one environment
-
-  deploy-prod:
-  # When release tag is added
-  # Some type of manual step ???
-
-
 workflows:
   test-and-deploy-to-dev: # Should run when merged to main
     jobs:
@@ -38,8 +24,7 @@ workflows:
       - node/test:
           filters:
             tags:
-              only: 
-                - /^release.*/
+              only: /^release.*/
             branches:
               ignore: /.*/
       - hold:
