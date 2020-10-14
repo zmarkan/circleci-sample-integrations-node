@@ -1,5 +1,7 @@
 # CircleCI sample integration - NodeJS
 
+[![zmarkan>](https://circleci.com/gh/zmarkan/circleci-sample-integrations-node.svg?style=svg)](<LINK>)
+
 The project is a NodeJS Express app written with TypeScript, deployed on Heroku.
 The NodeJS building work and Heroku deployment are provided by CircleCI orbs.
 
