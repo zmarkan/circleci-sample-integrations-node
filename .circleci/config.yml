@@ -22,7 +22,7 @@ workflows:
           type: approval
           requires:
             - node/test
-            filters:
+          filters:
             tags:
               only: /^v.*/
       - heroku/deploy-via-git:
