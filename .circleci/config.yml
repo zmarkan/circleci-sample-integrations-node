@@ -17,8 +17,6 @@ workflows:
             branches:
               only:
               - main
-            tags:
-              ignore: /.*/
       - hold-for-prod:
           type: approval
           requires:
