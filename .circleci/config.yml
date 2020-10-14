@@ -8,8 +8,13 @@ workflows:
   version: 2
   build-test-deploy:
     jobs:
-      - node/test
+      - node/test:
+          filters:
+            tags:
+              only: /^v.*/
+
       - heroku/deploy-via-git:
+          name: deploy-dev-app
           app-name: $HEROKU_API_DEV_ENV
           requires:
             - node/test
@@ -17,8 +22,7 @@ workflows:
             branches:
               only:
               - main
-            tags:
-              ignore: /.*/
+
       - hold-for-prod:
           type: approval
           requires:
@@ -28,8 +32,15 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
+
       - heroku/deploy-via-git:
+          name: deploy-prod-app
           app-name: $HEROKU_API_PROD_ENV
           requires:
             - hold-for-prod
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
 
