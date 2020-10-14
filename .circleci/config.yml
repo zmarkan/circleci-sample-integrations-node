@@ -24,13 +24,12 @@ workflows:
             - node/test
           filters:
             tags:
-              only: /^v.*/
+              ignore: /^v.*/
+            branches:
+              ignore: /.*/
       - heroku/deploy-via-git:
           app-name: $HEROKU_API_PROD_ENV
           requires:
             - hold-for-prod
-          filters:
-            tags:
-              only: /^v.*/
 
 
