@@ -25,6 +25,9 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+            branches:
+              only:
+                - main
       - heroku/deploy-via-git:
           app-name: $HEROKU_API_PROD_ENV
           requires:
@@ -32,5 +35,8 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+            branches:
+              only:
+                - main
 
 
