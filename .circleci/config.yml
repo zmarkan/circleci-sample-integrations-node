@@ -9,20 +9,20 @@ workflows:
     jobs:
       - node/test
       - heroku/deploy-via-git:
-        app-name: $HEROKU_API_DEV_ENV
-        requires:
-          - node/test
-        filters:
-          branches:
-            only:
+          app-name: $HEROKU_API_DEV_ENV
+          requires:
+            - node/test
+          filters:
+            branches:
+              only:
               - main
-          tags:
-            ignore: /.*/
+            tags:
+              ignore: /.*/
       - hold-for-prod:
           type: approval
           requires:
             - node/test
-          filters:
+            filters:
             tags:
               only: /^v.*/
       - heroku/deploy-via-git:
