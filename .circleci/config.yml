@@ -5,6 +5,7 @@ orbs:
   heroku: circleci/heroku@1.2.2
 
 workflows:  
+  version: 2
   build-test-deploy:
     jobs:
       - node/test
