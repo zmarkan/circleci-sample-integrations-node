@@ -4,37 +4,33 @@ orbs:
   node: circleci/node@4.1.0
   heroku: circleci/heroku@1.2.2
 
-workflows:
-  test-and-deploy-to-dev: # Should run when merged to main
+workflows:  
+  build-test-deploy:
     jobs:
       - node/test
       - heroku/deploy-via-git:
-          app-name: $HEROKU_API_DEV_ENV
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - node/test
-  
-  deploy-prod:
-    when:
-      equal: [main, << pipeline.git.branch >> ]
-    jobs:
-      - node/test
-      - hold:
+        app-name: $HEROKU_API_DEV_ENV
+        requires:
+          - node/test
+        filters:
+          branches:
+            only:
+              - main
+          tags:
+            ignore: /.*/
+      - hold-for-prod:
           type: approval
           requires:
             - node/test
           filters:
             tags:
-              only: /^release.*/   
+              only: /^v.*/
       - heroku/deploy-via-git:
           app-name: $HEROKU_API_PROD_ENV
           requires:
-            - hold
+            - hold-for-prod
           filters:
             tags:
-              only: /^release.*/
+              only: /^v.*/
 
 
