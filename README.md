@@ -1,6 +1,6 @@
 # CircleCI sample integration - NodeJS
 
-[![zmarkan>](https://circleci.com/gh/zmarkan/circleci-sample-integrations-node.svg?style=svg)](<LINK>)
+[![zmarkan>](https://circleci.com/gh/zmarkan/circleci-sample-integrations-node.svg?style=svg)](https://circleci.com/gh/zmarkan/circleci-sample-integrations-node)
 
 The project is a NodeJS Express app written with TypeScript, deployed on Heroku.
 The NodeJS building work and Heroku deployment are provided by CircleCI orbs.
@@ -15,7 +15,7 @@ The NodeJS building work and Heroku deployment are provided by CircleCI orbs.
 - `HEROKU_API_DEV_ENV` - your dev app/environment
 - `HEROKU_API_PROD_ENV` - your production app/environment
 
-## CircleCI workflow:
+## CircleCI workflow
 
 
 0. Check out `.circleci/config.yml` for the CircleCI config
