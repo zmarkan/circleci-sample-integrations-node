@@ -15,8 +15,7 @@ The NodeJS building work and Heroku deployment are provided by CircleCI orbs.
 - `HEROKU_API_DEV_ENV` - your dev app/environment
 - `HEROKU_API_PROD_ENV` - your production app/environment
 
-## CircleCI workflow
-
+## CircleCI workflow  
 
 0. Check out `.circleci/config.yml` for the CircleCI config
 1. Build & Test on every commit and pull request. Yes, it's a build, as it compiles TypeScript down to JavaScript. 
