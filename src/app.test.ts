@@ -12,8 +12,5 @@ describe('Test the root path', () => {
         expect(res.status).toBe(404)
     })
 
-    test("Failing test", () => {
-        expect(false).toBe(true)
-    })
 })
 
