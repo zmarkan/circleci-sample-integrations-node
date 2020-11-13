@@ -11,5 +11,9 @@ describe('Test the root path', () => {
         const res = await request(app).get("/404")
         expect(res.status).toBe(404)
     })
+
+    test("Failing test", () => {
+        expect(false).toBe(true)
+    })
 })
 

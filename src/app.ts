@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
                 </head>
                 <body>
                     <h1>Welcome to CircleCI</h1>
-                    <img src="https://media.giphy.com/media/18M7uaRp1aH5GtKTwo/giphy.gif" alt="Pets and foods in space GIF" />
+                    <img src="https://media.giphy.com/media/bmrxNoGqGNMAM/source.gif" alt="Pets and foods in space GIF" />
                 </body>
             </html>
         `)
